@@ -11,9 +11,16 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-from decouple import config, Csv
+from decouple import config
+import dj_database_url
+import dotenv
+import django_heroku
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+dotenv_file = os.path.join(BASE_DIR, ".env")
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
 
 SECRET_KEY = config('SECRET_KEY')
 
@@ -22,12 +29,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com']
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 
 
@@ -122,3 +125,9 @@ STATICFILES_DIRS = [
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') #Where collectstatic collects files
+
+
+
+django_heroku.settings(locals())
+
+del DATABASES['default']['OPTIONS']['sslmode']
