@@ -15,7 +15,7 @@ class Dht22(models.Model):
         return self.id
 
 
-class Chrip(models.Model):
+class Chirp(models.Model):
     sensor = models.CharField(max_length=20)
     moisture_value = models.CharField(max_length=3)
     moisture = models.CharField(max_length=5)
