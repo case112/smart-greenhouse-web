@@ -9,3 +9,7 @@ class Dht22(models.Model):
 
     def __str__(self):
         return self.sensor
+
+    @property
+    def dht22_id(self):
+        return self.id
