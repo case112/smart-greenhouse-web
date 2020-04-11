@@ -1,0 +1,11 @@
+.bottom-git{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    padding: 20px;
+}
+
+.hover-git:hover {
+    color: #1d1d1d;
+}

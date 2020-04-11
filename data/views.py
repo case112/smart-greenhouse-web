@@ -5,7 +5,7 @@ from . models import Dht22
 
 
 def index(request):
-    latest = Dht22.objects.all()[:7][::-1]
+    latest = Dht22.objects.all().order_by('-date')[:7]
     context = {
 		'latest': latest,
 	}
