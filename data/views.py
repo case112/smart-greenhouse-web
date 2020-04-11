@@ -5,13 +5,17 @@ from . models import Dht22
 
 
 def index(request):
-    return render(request, 'index.html', {})
+    latest = Dht22.objects.all()[:7][::-1]
+    context = {
+		'latest': latest,
+	}
+    return render(request, 'index.html', context)
 
 
 def temp_today(request):
     time = []
     data = []
-    queryset = Dht22.objects.filter(sensor__exact='Greenhouse2').order_by('date')[:16]
+    queryset = Dht22.objects.filter(sensor__exact='Greenhouse2').order_by('-date')[:16][::-1]
     for entry in queryset:
         x = str(entry.date)
         time.append(x[11:-3])
@@ -24,7 +28,7 @@ def temp_today(request):
 def hum_today(request):
     time = []
     data = []
-    queryset = Dht22.objects.filter(sensor__exact='Greenhouse2').order_by('date')[:16]
+    queryset = Dht22.objects.filter(sensor__exact='Greenhouse2').order_by('-date')[:16][::-1]
     for entry in queryset:
         x = str(entry.date)
         time.append(x[11:-3])
