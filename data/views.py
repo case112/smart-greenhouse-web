@@ -8,20 +8,28 @@ def index(request):
     return render(request, 'index.html', {})
 
 
-
-def temperature_chart(request):
-    dates = []
+def temp_today(request):
+    time = []
     data = []
-
-    date_from = datetime.datetime.now() - datetime.timedelta(days=1)
-
-    queryset = Dht22.objects.filter(date__gte=date_from, sensor__exact='Greenhouse2')[:16]
+    queryset = Dht22.objects.filter(sensor__exact='Greenhouse2').order_by('date')[:16]
     for entry in queryset:
         x = str(entry.date)
-        dates.append(x[11:-3])
+        time.append(x[11:-3])
         data.append(entry.temperature)
-    
     return JsonResponse(data={
-        'dates': dates,
+        'time': time,
+        'data': data,
+    })
+
+def hum_today(request):
+    time = []
+    data = []
+    queryset = Dht22.objects.filter(sensor__exact='Greenhouse2').order_by('date')[:16]
+    for entry in queryset:
+        x = str(entry.date)
+        time.append(x[11:-3])
+        data.append(entry.humidity)
+    return JsonResponse(data={
+        'time': time,
         'data': data,
     })

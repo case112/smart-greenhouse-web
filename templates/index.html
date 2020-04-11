@@ -93,7 +93,7 @@
             <!-- Card Body -->
             <div class="card-body">
               <div class="chart-area">
-                <canvas id="temperature-chart" data-url="{% url 'temperature-chart' %}"></canvas>
+                <canvas id="temp-today" data-url="{% url 'temp-today' %}"></canvas>
               </div>
             </div>
           </div>
@@ -102,12 +102,12 @@
          <div class="card shadow mb-4">
           <!-- Card Header - Dropdown -->
           <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Greenhouse humidity today</h6>
           </div>
           <!-- Card Body -->
           <div class="card-body">
             <div class="chart-area">
-              <canvas id="myAreaChart"></canvas>
+              <canvas id="hum-today" data-url="{% url 'hum-today' %}"></canvas>
             </div>
           </div>
         </div>

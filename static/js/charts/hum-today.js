@@ -1,18 +1,18 @@
 $(function () {
         
-    var $temperatureChart = $("#temperature-chart");
+    var $humidityToday = $("#hum-today");
     $.ajax({
-      url: $temperatureChart.data("url"),
+      url: $humidityToday.data("url"),
       success: function (data) {
 
-        var ctx = $temperatureChart[0].getContext("2d");
+        var ctx = $humidityToday[0].getContext("2d");
 
         new Chart(ctx, {
           type: 'line',
           data: {
-            labels: data.dates,
+            labels: data.time,
             datasets: [{
-              label: "Temperature",
+              label: "Humidity",
               lineTension: 0.3,
               backgroundColor: "rgba(78, 115, 223, 0.05)",
               borderColor: "rgba(78, 115, 223, 1)",
@@ -54,9 +54,9 @@ $(function () {
                 ticks: {
                   maxTicksLimit: 5,
                   padding: 10,
-                  // Include a dollar sign in the ticks
+                  // Include a degree sign in the ticks
                   callback: function(value, index, values) {
-                    return number_format(value) + '°C';
+                    return number_format(value) + '%';
                   }
                 },
                 gridLines: {
@@ -88,7 +88,7 @@ $(function () {
               callbacks: {
                 label: function(tooltipItem, chart) {
                   var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-                  return datasetLabel + ': ' + number_format(tooltipItem.yLabel) + '°C';
+                  return datasetLabel + ': ' + number_format(tooltipItem.yLabel) + '%';
                 }
               }
             }
