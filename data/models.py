@@ -24,3 +24,12 @@ class Chirp(models.Model):
 
     def __str__(self):
         return self.sensor
+
+
+class WindowState(models.Model):
+    sensor = models.CharField(max_length=20)
+    state = models.BooleanField()
+    date = models.DateTimeField(auto_now=False, auto_now_add=False)
+
+    def __str__(self):
+        return self.sensor

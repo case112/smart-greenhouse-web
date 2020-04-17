@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from . models import Dht22, Chirp
+from . models import Dht22, Chirp, WindowState
 
 class Dht22Admin(admin.ModelAdmin):
     list_display = ('sensor', 'temperature', 'humidity', 'date')
@@ -10,6 +10,11 @@ class ChirpAdmin(admin.ModelAdmin):
     list_display = ('sensor', 'moisture_value', 'moisture', 'temperature', 'date')
     list_filter = ('date',)
 
+class WindowStateAdmin(admin.ModelAdmin):
+    list_display = ('sensor', 'state', 'date')
+    list_filter = ('date',)
+
 admin.site.register(Dht22, Dht22Admin)
 admin.site.register(Chirp, ChirpAdmin)
+admin.site.register(WindowState, WindowStateAdmin)
 
