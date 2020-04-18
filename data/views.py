@@ -1,13 +1,15 @@
 from django.shortcuts import render
 import datetime
 from django.http import JsonResponse
-from . models import Dht22
+from . models import Dht22, WindowState
 
 
 def index(request):
     latest = Dht22.objects.all().order_by('-date')[:7]
+    window_state = WindowState.objects.latest('date')
     context = {
 		'latest': latest,
+        'window_state': window_state,
 	}
     return render(request, 'index.html', context)
 
