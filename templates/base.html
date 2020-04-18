@@ -5,10 +5,35 @@
 
 <body id="page-top">
 
-    {% block content %}
-    {% endblock content %}
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        
+        {% include "sidebar.html" %}
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                {% include "topbar.html" %}
+
+                {% block content %}
+                {% endblock content %}
+
+            </div>
+            <!-- End of Main Content -->
+
+        {% include "footer.html" %}
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
 
     {% include "scripts.html" %}
+
 </body>
 
 </html>

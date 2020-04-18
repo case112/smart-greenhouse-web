@@ -4,250 +4,154 @@
 {% block content %}
 
 
-  <!-- Page Wrapper -->
-  <div id="wrapper">
+<!-- Begin Page Content -->
+<div class="container-fluid">
 
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+  <!-- Content Row -->
+  <div class="row">
 
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-leaf"></i>
+
+    <!-- Window State -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-success shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Windows</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">
+                {% if window_state.state %}
+                  Open
+                {% else %}
+                  Closed
+                {% endif %}
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-wind fa-2x text-gray-300"></i>
+            </div>
+          </div>
         </div>
-        <div class="sidebar-brand-text mx-3"><sup>smart</sup> greenhouse</div>
-      </a>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Interface
       </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Settings</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Data options:</h6>
-            <a class="collapse-item" href="/">Visual</a>
-            <a class="collapse-item" href="/">DataTables</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
-
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
-
-      <div class="text-center d-none d-md-inline bottom-git">
-        <a class="hover-git" target="blank" href="https://github.com/case112/smart-greenhouse-web"> <i class="fab fa-github fa-3x"></i></a>
-      </div>
-
-
-    </ul>
-    <!-- End of Sidebar -->
-
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
-
-      <!-- Main Content -->
-      <div id="content">
-
-        <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-          <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
-
-          <!-- Page Heading -->
-          <li class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            <h1 class="h4 mb-0 text-gray-800">Dashboard</h1>
-          </li>
-          <div class="d-sm-flex align-items-right justify-content-between mb-2">
-            <a href="/" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-spinner fa-sm text-white-50"></i> Refresh</a>
-          </div>
-
-        </nav>
-        <!-- End of Topbar -->
-
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
-
-          <!-- Content Row -->
-          <div class="row">
-
-            <!-- Window State -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Windows</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">
-                        {% if window_state.state %}
-                          Open
-                        {% else %}
-                          Closed
-                        {% endif %}
-                      </div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-wind fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Last Watered -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Last watered</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">Currently offline</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-tint fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- System Voltage -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-danger shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Battery Voltage</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">Currently offline</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-car-battery fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Battery charger state -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-danger shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Charger</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">Currently offline</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-bolt fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-
-          
-          <!-- Greenhouse Today -->
-          <div class="card shadow mb-4">
-            <!-- Card Header - Dropdown -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-              <h6 class="m-0 font-weight-bold text-primary">Greenhouse temperature today</h6>
-            </div>
-            <!-- Card Body -->
-            <div class="card-body">
-              <div class="chart-area">
-                <canvas id="temp-today" data-url="{% url 'temp-today' %}"></canvas>
-              </div>
-            </div>
-          </div>
-            
-         <!-- Area Chart -->
-         <div class="card shadow mb-4">
-          <!-- Card Header - Dropdown -->
-          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Greenhouse humidity today</h6>
-          </div>
-          <!-- Card Body -->
-          <div class="card-body">
-            <div class="chart-area">
-              <canvas id="hum-today" data-url="{% url 'hum-today' %}"></canvas>
-            </div>
-          </div>
-        </div>
-            
-        <!-- Latest data -->
-        <div class="card shadow mb-4">
-          <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Latest data from all the DHT22 sensors</h6>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Temperature</th>
-                    <th>Humidity</th>
-                    <th>Time</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for obj in latest %}
-                  <tr>
-                    <td>{{ obj.sensor }}</td>
-                    <td>{{ obj.temperature }}</td>
-                    <td>{{ obj.humidity }}</td>
-                    <td>{{ obj.date }}</td>
-                  </tr>
-                  {% endfor %}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-          
-          
-
-        </div>
-        <!-- /.container-fluid -->
-
-      </div>
-      <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>made with <i class="fa fa-heart heart red"></i></span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
-
     </div>
-    <!-- End of Content Wrapper -->
+
+    <!-- Last Watered -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Last watered</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">Currently offline</div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-tint fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- System Voltage -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-danger shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Battery Voltage</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">Currently offline</div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-car-battery fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Battery charger state -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-danger shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Charger</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">Currently offline</div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-bolt fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
   </div>
-  <!-- End of Page Wrapper -->
+  
+
+  
+  <!-- Greenhouse Temperature Today -->
+  <div class="card shadow mb-4">
+    <!-- Card Header - Dropdown -->
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <h6 class="m-0 font-weight-bold text-primary">Greenhouse temperature today</h6>
+    </div>
+    <!-- Card Body -->
+    <div class="card-body">
+      <div class="chart-area">
+        <canvas id="temp-today" data-url="{% url 'temp-today' %}"></canvas>
+      </div>
+    </div>
+  </div>
+    
+  <!-- Greenhouse Humidity Today -->
+  <div class="card shadow mb-4">
+    <!-- Card Header - Dropdown -->
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <h6 class="m-0 font-weight-bold text-primary">Greenhouse humidity today</h6>
+    </div>
+    <!-- Card Body -->
+    <div class="card-body">
+      <div class="chart-area">
+        <canvas id="hum-today" data-url="{% url 'hum-today' %}"></canvas>
+      </div>
+    </div>
+  </div>
+
+    
+  <!-- Latest data -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Latest data from all the DHT22 sensors</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Temperature</th>
+              <th>Humidity</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for obj in latest %}
+            <tr>
+              <td>{{ obj.sensor }}</td>
+              <td>{{ obj.temperature }}</td>
+              <td>{{ obj.humidity }}</td>
+              <td>{{ obj.date }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+    
+
+</div>
 
   
 {% endblock content %}
