@@ -33,3 +33,21 @@ class WindowState(models.Model):
 
     def __str__(self):
         return self.sensor
+
+
+class Charge(models.Model):
+    charger = models.CharField(max_length=20)
+    state = models.BooleanField()
+    date = models.DateTimeField(auto_now=False, auto_now_add=False)
+
+    def __str__(self):
+        return self.charger
+
+
+class Voltage(models.Model):
+    sensor = models.CharField(max_length=20)
+    volts = models.CharField(max_length=5)
+    date = models.DateTimeField(auto_now=False, auto_now_add=False)
+
+    def __str__(self):
+        return self.sensor
