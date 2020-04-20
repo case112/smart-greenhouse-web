@@ -58,7 +58,9 @@
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Battery Voltage</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">Currently offline</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">
+                {{ voltage.volts }} V
+              </div>
             </div>
             <div class="col-auto">
               <i class="fas fa-car-battery fa-2x text-gray-300"></i>
@@ -75,7 +77,13 @@
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Charger</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">Currently offline</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">
+                {% if charge.state %}
+                  On
+                {% else %}
+                  Off
+                {% endif %}
+              </div>
             </div>
             <div class="col-auto">
               <i class="fas fa-bolt fa-2x text-gray-300"></i>
