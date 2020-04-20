@@ -29,6 +29,9 @@
             <div class="col-auto">
               <i class="fas fa-wind fa-2x text-gray-300"></i>
             </div>
+            <div class="small-info">
+              Measured @ {{ window_state.date|date:"H:i d-m-y" }}
+            </div>
           </div>
         </div>
       </div>
@@ -64,6 +67,9 @@
             </div>
             <div class="col-auto">
               <i class="fas fa-car-battery fa-2x text-gray-300"></i>
+            </div>
+            <div class="small-info">
+              Measured @ {{ voltage.date|date:"H:i d-m-y" }}
             </div>
           </div>
         </div>
