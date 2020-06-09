@@ -1,40 +1,41 @@
 from django.db import models
 
-# New model that combines all sensors
-class Sensors(models.Model):
-    name = models.ForeignKey(to=Objects, on_delete=models.PROTECT)
-    date = models.DateTimeField(auto_now=False, auto_now_add=False)
-    temperature = models.CharField(max_length=5, blank=True)
-    humidity = models.CharField(max_length=5, blank=True)
-    moisture = models.CharField(max_length=5, blank=True)
-
-    def __str__(self):
-        return self.name
-
-    @property
-    def sensor_id(self):
-        return self.id
-
 # New model that lets define names(of devices)
-class Objects(models.Model):
+class Object(models.Model):
     object_name = models.CharField(max_length=30)
 
     def __str__(self):
         return self.object_name
 
+
+# New model that combines all sensors
+class Sensor(models.Model):
+    sensor_name = models.ForeignKey(Object, on_delete=models.PROTECT, related_name='sensor_name')
+    date = models.DateTimeField(auto_now=False, auto_now_add=False)
+    temperature = models.CharField(max_length=5, blank=True, null=True)
+    humidity = models.CharField(max_length=5, blank=True, null=True)
+    moisture = models.CharField(max_length=5, blank=True, null=True)
+
+    #def __str__(self):
+        #return self.sensor_name
+
+    #@property
+    #def sensor_id(self):
+        #return self.id
+
 # New model that combines State/Voltage/Charge
-class States(models.Model):
-    name = models.ForeignKey(to=Objects, on_delete=models.PROTECT)
+class State(models.Model):
+    state_name = models.ForeignKey(Object, on_delete=models.PROTECT, related_name='state_name')
     date = models.DateTimeField(auto_now=False, auto_now_add=False)
     state = models.BooleanField()
-    value = models.CharField(max_length=10, blank=True)
+    value = models.CharField(max_length=10, blank=True, null=True)
 
-    def __str__(self):
-        return self.name
+    #def __str__(self):
+       # return self.state_name
 
-    @property
-    def sensor_id(self):
-        return self.id
+    #@property
+    #def sensor_id(self):
+        #return self.id
 
 
 # Older models ----------------------

@@ -12,8 +12,8 @@ if os.path.isfile(dotenv_file):
 
 SECRET_KEY = config('SECRET_KEY')
 
-DEBUG = config('DEBUG', default=False, cast=bool)
-DEBUG_PROPAGATE_EXCEPTIONS = True
+DEBUG = True #config('DEBUG', default=False, cast=bool)
+#DEBUG_PROPAGATE_EXCEPTIONS = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com']
 
