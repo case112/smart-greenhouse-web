@@ -21,7 +21,7 @@ class Sensor(models.Model):
 class State(models.Model):
     state_name = models.ForeignKey(Object, on_delete=models.PROTECT, related_name='state_name')
     created_at = models.DateTimeField(auto_now=False, auto_now_add=False)
-    state = models.BooleanField()
+    state = models.BooleanField(blank=True, null=True, default=None)
     value = models.CharField(max_length=10, blank=True, null=True)
 
     

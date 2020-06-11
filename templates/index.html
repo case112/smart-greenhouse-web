@@ -19,7 +19,7 @@
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Windows</div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">
-                {% if window_state.state %}
+                {% if window_state.state == True %}
                   Open
                 {% else %}
                   Closed
@@ -30,7 +30,7 @@
               <i class="fas fa-wind fa-2x text-gray-300"></i>
             </div>
             <div class="small-info">
-              Measured @ {{ window_state.date|date:"H:i d-m-y" }}
+              Measured @ {{ window_state.created_at|date:"H:i d-m-y" }}
             </div>
           </div>
         </div>
@@ -62,14 +62,14 @@
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Battery Voltage</div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">
-                {{ voltage.volts }} V
+                {{ voltage.value }} V
               </div>
             </div>
             <div class="col-auto">
               <i class="fas fa-car-battery fa-2x text-gray-300"></i>
             </div>
             <div class="small-info">
-              Measured @ {{ voltage.date|date:"H:i d-m-y" }}
+              Measured @ {{ voltage.created_at|date:"H:i d-m-y" }}
             </div>
           </div>
         </div>
@@ -84,7 +84,7 @@
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Charger</div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">
-                {% if charge.state %}
+                {% if charge.state == True %}
                   On
                 {% else %}
                   Off
@@ -113,7 +113,7 @@
     <!-- Card Body -->
     <div class="card-body">
       <div class="chart-area">
-        <canvas id="temp-today" data-url="{% url 'temp-today' %}"></canvas>
+       <!-- <canvas id="temp-today" data-url="{% url 'temp-today' %}"></canvas>  -->
       </div>
     </div>
   </div>
@@ -127,7 +127,7 @@
     <!-- Card Body -->
     <div class="card-body">
       <div class="chart-area">
-        <canvas id="hum-today" data-url="{% url 'hum-today' %}"></canvas>
+       <!-- <canvas id="hum-today" data-url="{% url 'hum-today' %}"></canvas>  -->
       </div>
     </div>
   </div>
@@ -136,7 +136,7 @@
   <!-- Latest data -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">Latest data from all the DHT22 sensors</h6>
+      <h6 class="m-0 font-weight-bold text-primary">Latest data from all the sensors</h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -146,16 +146,18 @@
               <th>Name</th>
               <th>Temperature</th>
               <th>Humidity</th>
-              <th>Time</th>
+              <th>Moisture</th>
+              <th>Measured</th>
             </tr>
           </thead>
           <tbody>
             {% for obj in latest %}
             <tr>
-              <td>{{ obj.sensor }}</td>
+              <td>{{ obj.sensor_name }}</td>
               <td>{{ obj.temperature }}</td>
               <td>{{ obj.humidity }}</td>
-              <td>{{ obj.date }}</td>
+              <td>{{ obj.moisture }}</td>
+              <td>{{ obj.created_at }}</td>
             </tr>
             {% endfor %}
           </tbody>
