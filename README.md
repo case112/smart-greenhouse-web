@@ -1,4 +1,4 @@
-# [Web Application](http://staginggreenhouse.herokuapp.com/ "Heroku Link")  for displaying parameters of [Smart Greenhouse](https://github.com/case112/smart-greenhouse "Github Link") 
+# [Web Application](http://thesmartgreenhouse.herokuapp.com/ "Heroku Link")  for displaying parameters of [Smart Greenhouse](https://github.com/case112/smart-greenhouse "Github Link") 
 
 ## Note that the site is currently under construction and might be unavailable at times + there might be issues with the data
 

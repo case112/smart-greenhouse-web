@@ -17,9 +17,14 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Windows</div>
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Window 1 & 2</div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">
-                {% if window_state.state == True %}
+                {% if window_state1.state == True %}
+                  Open /
+                {% else %}
+                  Closed /
+                {% endif %}
+                {% if window_state2.state == True %}
                   Open
                 {% else %}
                   Closed
@@ -29,9 +34,9 @@
             <div class="col-auto">
               <i class="fas fa-wind fa-2x text-gray-300"></i>
             </div>
-            <div class="small-info">
-              Measured @ {{ window_state.created_at|date:"H:i d-m-y" }}
-            </div>
+          </div>
+          <div class="small-info">
+            Measured @ {{ window_state1.created_at|date:"H:i d-m-y" }}
           </div>
         </div>
       </div>
@@ -56,11 +61,11 @@
 
     <!-- System Voltage -->
     <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-left-danger shadow h-100 py-2">
+      <div class="card border-left-warning shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Battery Voltage</div>
+              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Battery Voltage</div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">
                 {{ voltage.value }} V
               </div>
@@ -68,9 +73,9 @@
             <div class="col-auto">
               <i class="fas fa-car-battery fa-2x text-gray-300"></i>
             </div>
-            <div class="small-info">
-              Measured @ {{ voltage.created_at|date:"H:i d-m-y" }}
-            </div>
+          </div>
+          <div class="small-info">
+            Measured @ {{ voltage.created_at|date:"H:i d-m-y" }}
           </div>
         </div>
       </div>
@@ -78,11 +83,11 @@
 
     <!-- Battery charger state -->
     <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-left-danger shadow h-100 py-2">
+      <div class="card border-left-warning shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Charger</div>
+              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Charger</div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">
                 {% if charge.state == True %}
                   On
@@ -95,6 +100,7 @@
               <i class="fas fa-bolt fa-2x text-gray-300"></i>
             </div>
           </div>
+          
         </div>
       </div>
     </div>
@@ -136,7 +142,7 @@
   <!-- Latest data -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">Latest data from all the sensors</h6>
+      <h6 class="m-0 font-weight-bold text-primary">Latest data from sensors</h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -151,13 +157,78 @@
             </tr>
           </thead>
           <tbody>
-            {% for obj in latest %}
+            {% for obj in latest_sensors %}
             <tr>
-              <td>{{ obj.sensor_name }}</td>
-              <td>{{ obj.temperature }}</td>
-              <td>{{ obj.humidity }}</td>
-              <td>{{ obj.moisture }}</td>
-              <td>{{ obj.created_at }}</td>
+              <td>
+                {{ obj.sensor_name }}
+              </td>
+              <td>
+                {{ obj.temperature }}
+              </td>
+              <td>
+                {% if obj.humidity == None %}
+                  -
+                {% else %}
+                  {{ obj.humidity }}
+                {% endif %}
+              </td>
+              <td>
+                {% if obj.moisture == None %}
+                  -
+                {% else %}
+                  {{ obj.moisture }}
+                {% endif %}
+              </td>
+              <td>
+                {{ obj.created_at }}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+    
+  <!-- Latest data -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Latest data from states</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>State</th>
+              <th>Value</th>
+              <th>Measured</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for obj in latest_states %}
+            <tr>
+              <td>
+                {{ obj.state_name }}                
+              </td>
+              <td>
+                {% if obj.state == None %}
+                  -
+                {% else %}
+                  {{ obj.state }}
+                {% endif %}
+              </td>
+              <td>
+                {% if obj.value == None %}
+                  -
+                {% else %}
+                  {{ obj.value }}
+                {% endif %}
+              </td>
+              <td>
+                {{ obj.created_at }}
+              </td>
             </tr>
             {% endfor %}
           </tbody>
