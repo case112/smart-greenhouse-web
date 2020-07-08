@@ -7,10 +7,10 @@ from . models import State, Sensor, Object
 def index(request):
     latest_sensors = Sensor.objects.all().order_by('-created_at')[:10]
     latest_states = State.objects.all().order_by('-created_at')[:10]
-    window_state1 = State.objects.filter(state_name=8).order_by('created_at').first()
-    window_state2 = State.objects.filter(state_name=9).order_by('created_at').first()
-    voltage = State.objects.filter(state_name=10).order_by('created_at').first()
-    charge = State.objects.filter(state_name=11).order_by('created_at').first()
+    window_state1 = State.objects.filter(state_name=8).order_by('-created_at').first()
+    window_state2 = State.objects.filter(state_name=9).order_by('-created_at').first()
+    voltage = State.objects.filter(state_name=10).order_by('-created_at').first()
+    charge = State.objects.filter(state_name=11).order_by('-created_at').first()
     context = {
 		'latest_sensors': latest_sensors,
         'latest_states': latest_states,
